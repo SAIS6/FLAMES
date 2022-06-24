@@ -1,0 +1,40 @@
+c=input("Enter :").replace(" ","").lower()
+o=input("Enter :").replace(" ","").lower()
+l1=[]
+l2=[]
+l3=['Friends','Love','Affection','Marriage','Enemies','Siblings']
+for i in range(len(c)):
+    l1.append(c[i])
+for i in range(len(o)):
+    l2.append(o[i])
+i=0    
+def f(i,l1,l2):
+    for j in range(len(l2)):
+        try:
+            if(l1[i]==l2[j]):
+                l1.remove(l1[i])
+                l2.remove(l2[j])
+                return f(i,l1,l2)
+        except:
+            return 1
+    if((i+1)==len(l1)-1):
+         
+         return 1
+    else:
+         return f(i+1,l1,l2)        
+k=f(i,l1,l2)           
+n=len(l1)+len(l2)
+while(len(l3)!=1):
+    if(n>len(l3)):
+        n=n-len(l3)
+    else:
+        n-=1
+        l3.remove(l3[n])
+        j=0
+        for i in range(n,len(l3)):
+            s=l3[i]
+            l3.remove(l3[i])
+            l3.insert(j,s)
+            j+=1
+        n=len(l1)+len(l2)
+print(l3[0])
